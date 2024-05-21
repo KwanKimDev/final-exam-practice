@@ -91,3 +91,40 @@ class ListCalculatorTest(unittest.TestCase):
         calculator = ListCalculator(x_values, y_values)
         result = calculator.lists_division()
         return result
+
+
+# Question 5
+# Add an assertion to raise an error when a division by zero occurs. Commit the new version of the code
+class ListCalculator:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def lists_division(self):
+        sum_x = sum(self.x)
+        sum_y = sum(self.y)
+
+        assert sum_x != 0, "Error: Division by zero"
+        return sum_y / sum_x
+
+
+# Question 6
+# Change the code and rather than adding an assertion use try: except construct to deal with the division by zero case. Make it so that when you have a division by zero you print a message that says “infinite!” Commit the new version of the code
+
+
+class ListCalculator:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def lists_division(self):
+        sum_x = sum(self.x)
+        sum_y = sum(self.y)
+
+        try:
+            result = sum_y / sum_x
+        except ZeroDivisionError:
+            print("infinite!")
+            return
+
+        return result
