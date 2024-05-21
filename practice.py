@@ -34,3 +34,44 @@ y_values = [5, 10, 15]
 calculator = ListCalculator(x_values, y_values)
 result = calculator.divisions()
 print("Result:", result)
+
+
+# Question 3
+# Add at least two unit tests for the ListCalculator class to test the lists_division method. If you did not manage to have a solution for exercise 2, create two unit tests for the sample code in exercise 1. Keep the test code as a separate file and call it TestListCalculator.py Remember that this file should import the code under test e.g.from practice import ListCalculator Add the tests and commit this version of the code.
+
+import unittest
+from practice import ListCalculator
+
+
+class ListCalculatorTest(unittest.TestCase):
+    def testsame(self):
+        x_values = [2, 4, 6]
+        y_values = [2, 4, 6]
+        calculator = ListCalculator(x_values, y_values)
+        result = calculator.divisions()
+        self.assertEqual(result, 1)
+
+    def testnegative(self):
+        x_values = [-10, -20, -30]
+        y_values = [5, 10, 15]
+        calculator = ListCalculator(x_values, y_values)
+        result = calculator.divisions()
+        self.assertEqual(result, -0.5)
+
+    def testseveral(self):
+        x_values = [10, 20, 30, 40]
+        y_values = [5, 10, 15, 20]
+        calculator = ListCalculator(x_values, y_values)
+        result = calculator.divisions()
+        self.assertEqual(result, 0.5)
+
+    def testfew(self):
+        x_values = [10]
+        y_values = [5]
+        calculator = ListCalculator(x_values, y_values)
+        result = calculator.divisions()
+        self.assertEqual(result, 0.5)
+
+
+if __name__ == "__main__":
+    unittest.main()
